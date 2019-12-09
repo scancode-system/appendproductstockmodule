@@ -1,0 +1,14 @@
+{
+    "name": "AppendProductStock",
+    "alias": "appendproductstock",
+    "description": "",
+    "keywords": [],
+    "active": 1,
+    "order": 0,
+    "providers": [
+        "Modules\\AppendProductStock\\Providers\\AppendProductStockServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}
