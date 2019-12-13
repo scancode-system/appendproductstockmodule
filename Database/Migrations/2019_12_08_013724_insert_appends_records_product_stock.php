@@ -19,7 +19,7 @@ class InsertAppendsRecordsProductStock extends Migration
         $validation = Validation::where('module_name', 'ValidationProduct')->first();
         Append::create(['validation_id' => $validation->id, 'module' => 'AppendProductStock', 'alias' => 'Estoque Simples']);
     }
-
+ 
     /**
      * Reverse the migrations.
      *
