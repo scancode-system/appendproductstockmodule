@@ -8,6 +8,16 @@ use Illuminate\Database\Eloquent\Factory;
 class AppendProductStockServiceProvider extends ServiceProvider
 {
     /**
+     * @var string $moduleName
+     */
+    protected $moduleName = 'AppendProductStock';
+
+    /**
+     * @var string $moduleNameLower
+     */
+    protected $moduleNameLower = 'appendproductstock';
+
+    /**
      * Boot the application events.
      *
      * @return void
@@ -15,7 +25,6 @@ class AppendProductStockServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->registerConfig();
-        $this->registerViews();
         $this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
     }
 
@@ -26,7 +35,6 @@ class AppendProductStockServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->register(RouteServiceProvider::class);
     }
 
     /**
@@ -37,32 +45,20 @@ class AppendProductStockServiceProvider extends ServiceProvider
     protected function registerConfig()
     {
         $this->publishes([
+            module_path($this->moduleName, 'Config/config.php') => config_path($this->moduleNameLower . '.php'),
+        ], 'config');
+        $this->mergeConfigFrom(
+            module_path($this->moduleName, 'Config/config.php'), $this->moduleNameLower
+        );
+
+        /*$this->publishes([
             __DIR__.'/../Config/config.php' => config_path('appendproductstock.php'),
         ], 'config');
         $this->mergeConfigFrom(
             __DIR__.'/../Config/config.php', 'appendproductstock'
-        );
+        );*/
     }
 
-    /**
-     * Register views.
-     *
-     * @return void
-     */
-    public function registerViews()
-    {
-        $viewPath = resource_path('views/modules/appendproductstock');
-
-        $sourcePath = __DIR__.'/../Resources/views';
-
-        $this->publishes([
-            $sourcePath => $viewPath
-        ],'views');
-
-        $this->loadViewsFrom(array_merge(array_map(function ($path) {
-            return $path . '/modules/appendproductstock';
-        }, \Config::get('view.paths')), [$sourcePath]), 'appendproductstock');
-    }
 
 
     /**
