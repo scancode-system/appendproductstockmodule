@@ -6,11 +6,14 @@ namespace Modules\AppendProductStock\Validator;
 class AppendProductStockValidator
 {
 
+	public $date_columns = ['date_delivery'];
+	public $string_columns = [];
+
 
 	public function rule($data){
 		return [
 			'available' => 'integer|min:0',
-			'date_delivery' => 'string|date_format:Y-m-d',
+			'date_delivery' => 'date',
 		];
 	}
 
