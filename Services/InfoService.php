@@ -4,6 +4,7 @@ namespace Modules\AppendProductStock\Services;
 
 
 use Modules\Portal\Services\Validation\Data\InfoValidationService;
+use Modules\Portal\Services\Validation\Data\InfoValidationsService;
 
 
 class InfoService extends InfoValidationService
@@ -20,10 +21,10 @@ class InfoService extends InfoValidationService
 
 	public function modifiers()
 	{
-		return  [
+		/*return  [
 			['rule' => ['date_delivery' => 'required|date_format:d/m/Y'], 'filter' => 'dateDMY'],
 			['rule' => ['date_delivery' => 'required|date_format:j/n/Y'], 'filter' => 'dateDMY'],
-		];
+		];*/
 	}
 
 	public function columnsFormat()
