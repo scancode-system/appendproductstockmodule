@@ -35,7 +35,7 @@ class InfoService extends InfoValidationService
 		];*/
 	}
 
-	public function modifiers()
+	public function modifiers($data)
 	{
 		/*return  [
 			['rule' => ['date_delivery' => 'required|date_format:d/m/Y'], 'filter' => 'dateDMY'],
